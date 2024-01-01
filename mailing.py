@@ -5,7 +5,8 @@ from tkinter.filedialog import askopenfilename
 import csv
 import pandas as pd
 import openpyxl
-import text
+import text_html
+from termcolor import colored
 
 Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
 zalacznik = askopenfilename(title='Wybierz plik zalacznika') # show an "Open" dialog box and return the path to the selected file
@@ -41,7 +42,7 @@ for x in df_excel.values:
     nazwisko=x[2]
     firma=x[3]
     tytul=f'mail testowy do {imie}'
-    body=text.body(imie,nazwisko,firma)
+    body=text_html.body(imie,nazwisko,firma)
     send_mail(tytul=tytul,body=body,sender=sender,adresat=mail,zalacznik=zalacznik)
 
 '''
